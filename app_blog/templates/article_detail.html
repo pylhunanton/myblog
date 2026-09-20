@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ item.title }}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
+        h1, h2, h3, h4 { color: #2c3e50; }
+        a { color: #2980b9; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .breadcrumb { list-style: none; padding: 10px 0; margin-bottom: 20px; display: flex; gap: 8px; font-size: 14px; color: #7f8c8d; }
+        .breadcrumb li+li:before { content: "/ "; color: #bdc3c7; }
+        .content { font-size: 16px; margin: 20px 0; line-height: 1.8; }
+        .date { color: #7f8c8d; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <ol class="breadcrumb">
+        <li><a href="/">Головна</a></li>
+        <li><a href="{% url 'articles-list' %}">Публікації</a></li>
+        {% if item.category %}
+        <li><a href="{{ item.category.get_absolute_url }}">{{ item.category }}</a></li>
+        {% endif %}
+        <li>{{ item.title }}</li>
+    </ol>
+
+    <h1>{{ item.title }}</h1>
+    <div class="date">{{ item.pub_date|date:"j E Y"|safe }}</div>
+    <hr>
+    
+    <div class="content">
+        {{ item.description|escape|safe }}
+    </div>
+
+    {% if images %}
+        <h3>Ілюстрації:</h3>
+        {% include 'fotorama.html' with images=images %}
+    {% endif %}
+
+    <hr>
+    <p><a href="{% url 'articles-list' %}">← Повернутися до всіх публікацій</a></p>
+</body>
+</html>

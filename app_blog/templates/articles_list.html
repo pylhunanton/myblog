@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Публікації блогу</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
+        h1, h2, h3, h4 { color: #2c3e50; }
+        a { color: #2980b9; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .articles-row { background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .container-image img { max-width: 100%; height: auto; border-radius: 6px; margin-top: 10px; max-height: 280px; object-fit: cover; }
+        .date { color: #718096; font-size: 14px; margin: 6px 0; }
+    </style>
+</head>
+<body>
+    <p><a href="/">← На головну сторінку</a></p>
+    <h1>Публікації {% if category %}у категорії «{{ category }}»{% endif %}</h1>
+    <hr>
+    {% for item in items %}
+    <div class="articles-row">
+        <a href="{{ item.get_absolute_url }}">
+            <h2>{{ item.title }}</h2>
+        </a>
+        <div class="date">{{ item.pub_date|date:"j E Y"|safe }}</div>
+        <p>{{ item.description|safe|escape|striptags|truncatewords_html:32 }}</p>
+        {% if item.images.all %}
+        <div class="container-image">
+            <img class="img" src="{{ item.images.all.0.image.url }}" alt="{{ item.title }}" />
+        </div>
+        {% endif %}
+    </div>
+    {% empty %}
+        <p>У цьому розділі публікацій немає.</p>
+    {% endfor %}
+</body>
+</html>
