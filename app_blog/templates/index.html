@@ -1,52 +1,42 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="utf-8">
-    <title>Персональний блог - Головна</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
-        h1, h2, h3, h4 { color: #2c3e50; }
-        a { color: #2980b9; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .badge { display: inline-block; background: #3498db; color: white; padding: 4px 10px; border-radius: 4px; font-size: 14px; margin-right: 8px; margin-bottom: 8px; }
-        .date { color: #7f8c8d; font-size: 14px; margin: 5px 0; }
-    </style>
-</head>
-<body>
-    <h1>Персональний блог</h1>
-    <hr>
-    
-    <h2>Категорії</h2>
-    <div style="margin-bottom: 25px;">
-    {% if categories %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% spaceless %}
+
+{% if categories %}
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-categories">
         {% for item in categories %}
-            <a class="badge" href="{{ item.get_absolute_url }}">{{ item.category }}</a>
+        <a href="{{ item.get_absolute_url }}">
+            <h4>{{ item.category }}</h4>
+        </a>
         {% endfor %}
-    {% else %}
-        <p>Категорій поки немає.</p>
-    {% endif %}
     </div>
+</nav>
+{% endif %}
 
-    <h2>Головні публікації</h2>
-    {% if articles %}
-        {% for item in articles %}
-        <div class="card">
-            <a href="{{ item.get_absolute_url }}">
-                <h3>{{ item.title }}</h3>
-            </a>
-            <div class="date">{{ item.pub_date|date:"j E Y"|safe }}</div>
-            <p>{{ item.description|safe|escape|striptags|truncatewords_html:32 }}</p>
-        </div>
-        {% endfor %}
-    {% else %}
-        <p>Публікацій поки немає.</p>
-    {% endif %}
-
-    <hr>
+{% if articles %}
+{% for item in articles %}
+<div class="article-block">
+    <a href="{{ item.get_absolute_url }}">
+        <h4>{{ item.title }}</h4>
+    </a>
+    <h5>
+        {{ item.pub_date|date:"j E Y" }}
+    </h5>
     <p>
-        <a href="{% url 'articles-list' %}" style="font-weight: bold; font-size: 16px;">➔ Переглянути всі публікації блогу</a> | 
-        <a href="/admin/">Панель адміністратора</a>
+        {{ item.description|safe|striptags|truncatewords_html:32 }}
     </p>
-</body>
-</html>
+</div>
+{% endfor %}
+{% endif %}
+
+<div style="margin: 25px 0;">
+    <a href="{% url 'articles-list' %}" class="all-articles-btn">
+        Всі публікації &rarr;
+    </a>
+</div>
+
+{% endspaceless %}
+{% endblock %}

@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+body {
+    background-image: url('../img/bg_poly.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #212529;
+    font-family: 'Ubuntu', sans-serif;
+    color: #333333;
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 980px;
+}
+
+/* Заголовок блогу Персональний блог */
+.site-title, div > h1, h1 {
+    color: #ffffff !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+a.site-title-link, a.site-title-link:hover, a.site-title-link:focus {
+    text-decoration: none;
+    color: #ffffff !important;
+}
+
+/* Навігаційна панель категорій як у методичці */
+.navbar.navbar-default {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+}
+
+.navbar-categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 5px 0;
+}
+
+.navbar-categories a {
+    text-decoration: none !important;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.navbar-categories a:hover {
+    transform: translateY(-1px);
+    opacity: 0.85;
+}
+
+.navbar-categories a h4, body > div > nav > div > a > h4 {
+    color: #ffffff !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Білі прямокутні блоки для публікацій як у методичці */
+.article-block {
+    background: #ffffff;
+    color: #383838;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s ease;
+}
+
+.article-block:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.article-block a {
+    color: #212529 !important;
+    text-decoration: none !important;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.article-block a:hover h4 {
+    color: #0d47a1 !important;
+}
+
+.article-block h4 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 8px;
+    line-height: 1.35;
+    color: #212529;
+}
+
+.article-block h5 {
+    color: #6c757d;
+    font-size: 13.5px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-weight: 400;
+}
+
+.article-block p {
+    color: #495057;
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+/* Кнопка "Всі публікації" */
+.all-articles-btn {
+    display: inline-block;
+    color: #ffffff !important;
+    background-color: #0288d1;
+    padding: 11px 24px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.all-articles-btn:hover {
+    background-color: #0277bd;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+/* Сторінка списку публікацій */
+.articles-row {
+    background: #ffffff;
+    color: #383838;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+}
+
+.articles-row a {
+    color: #212529 !important;
+    text-decoration: none !important;
+}
+
+.articles-row a:hover h4 {
+    color: #0d47a1 !important;
+}
+
+.articles-row h4 {
+    font-size: 23px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.articles-row h5 {
+    color: #6c757d;
+    font-size: 13.5px;
+    margin-bottom: 14px;
+}
+
+.articles-row p {
+    color: #495057;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+div.container-image {
+    margin-top: 18px;
+    max-width: 680px;
+}
+
+div.container-image > img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Навігація breadcrumb */
+.breadcrumb {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 4px;
+    padding: 12px 18px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(5px);
+}
+
+.breadcrumb > li {
+    display: inline-block;
+    margin: 0 6px;
+    color: #e0e0e0;
+    font-size: 14.5px;
+}
+
+.breadcrumb > li a {
+    color: #81d4fa !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb > li a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb > li + li:before {
+    content: "/ ";
+    padding: 0 6px;
+    color: #b0bec5;
+}
+
+.breadcrumb > li.active, .breadcrumb > li:last-child {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Детальна сторінка публікації */
+.article-detail-card {
+    background: #ffffff;
+    color: #212529;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 35px;
+    margin-bottom: 35px;
+}
+
+.article-detail-card h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #1a237e;
+}
+
+.article-detail-card h5 {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.article-detail-card .article-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #2b2b2b;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .site-title, div > h1, h1 {
+        font-size: 28px;
+    }
+    .navbar-categories {
+        gap: 20px;
+    }
+    .navbar-categories a h4 {
+        font-size: 17px;
+    }
+    .article-block {
+        padding: 18px;
+    }
+}
